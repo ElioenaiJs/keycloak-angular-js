@@ -14,18 +14,16 @@ const isAccessAllowed = async (
   if (!authenticated) {
     await authData.keycloak.login({
       redirectUri: window.location.origin + state.url,
-      prompt: 'login'
+      prompt: 'login',
     });
     return false;
   }
 
   // Verificar roles si se especifican en la ruta
   const requiredRoles: string[] = route.data['roles'] || [];
-  
+
   if (requiredRoles.length > 0) {
-    const hasRequiredRole = requiredRoles.some(role => 
-      grantedRoles.realmRoles.includes(role)
-    );
+    const hasRequiredRole = requiredRoles.some((role) => grantedRoles.realmRoles.includes(role));
 
     if (!hasRequiredRole) {
       return router.parseUrl('/unauthorized');

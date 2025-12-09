@@ -1,1 +1,15 @@
-<p>protected works!</p>
+<div class="container">
+  <h1>Página Protegida</h1>
+  <p>Esta página solo es accesible si estás autenticado</p>
+
+  <div class="user-info">
+    <h3>Información del Usuario:</h3>
+    <p><strong>Usuario:</strong> {{ username() }}</p>
+    <p><strong>Email:</strong> {{ email() }}</p>
+    <p><strong>Roles:</strong> {{ roles().join(', ') || 'Sin roles' }}</p>
+    <p><strong>Token:</strong> {{ tokenPreview() }}</p>
+  </div>
+
+  <button (click)="goHome()">Volver al Inicio</button>
+  <button (click)="logout()">Cerrar Sesión</button>
+</div>

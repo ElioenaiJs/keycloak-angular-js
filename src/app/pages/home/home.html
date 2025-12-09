@@ -1,1 +1,19 @@
-<p>home works!</p>
+<div class="container">
+  <h1>Página de Inicio</h1>
+
+  @if(!isLoggedIn()){
+  <div>
+    <p>No estás autenticado</p>
+    <button (click)="login()">Iniciar Sesión</button>
+  </div>
+  } 
+  
+  @if(isLoggedIn()){
+  <div>
+    <p>¡Bienvenido, {{ username() }}!</p>
+    <p>Email: {{ email() }}</p>
+    <button (click)="goToProtected()">Ir a página protegida</button>
+    <button (click)="logout()">Cerrar Sesión</button>
+  </div>
+  }
+</div>
